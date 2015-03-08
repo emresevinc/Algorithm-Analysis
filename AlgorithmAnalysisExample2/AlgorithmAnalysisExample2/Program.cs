@@ -46,7 +46,11 @@ namespace AlgorithmAnalysisExample2
             return array[range-1];
         }
 
-
+        static int getMaxElement(int[] arr) 
+        {
+            int[] newArr = sortCalculation(arr);
+            return newArr[0]; // Max eleman 
+        }
 
         static void showValuesOfArray(int[] arr) 
         {
@@ -61,7 +65,8 @@ namespace AlgorithmAnalysisExample2
 
         static void options(int[] dizi) 
         {
-            Console.WriteLine("\n Diziyi siralamak isterseniz : 1\n Sıralamada istediğiniz sıradaki elemanı öğrenmek için :2\n Çıkış için : 3      e basiniz");
+            Console.WriteLine("\n Diziyi siralamak isterseniz : 1\n Sıralamada istediğiniz sıradaki elemanı öğrenmek için :2\n "+
+            "Max eleman için : 3 \n Herhangi bir index elemani ogrenmek icin : 4   \n Cikis icin 1 , 2 , 3, 4 haricinde bir tusa basiniz ");
             int opt = Int32.Parse(Console.ReadLine());
             if (opt == 1)
             {
@@ -82,9 +87,18 @@ namespace AlgorithmAnalysisExample2
                 Console.WriteLine();
                 options(dizi);
             }
-            else
+            else if(opt == 3)
             {
-
+                Console.WriteLine("Maximum buyuklukteki eleman : {0} \n",getMaxElement(dizi));
+                options(dizi);
+            }
+            else if (opt == 4)
+            {
+                Console.WriteLine("Dizinin herhangi bir indexteki elemani icin index degeri girin : ");
+                int k = Int32.Parse(Console.ReadLine());
+                Console.Write("Dizinin durumu : ");
+                showValuesOfArray(dizi);
+                Console.WriteLine("Istedigidiniz eleman : {0}",dizi[k-1]);
             }
         }
         static void Main(string[] args)
